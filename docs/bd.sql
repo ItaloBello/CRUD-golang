@@ -4,7 +4,9 @@ CREATE TABLE usuario (
     email TEXT NOT NULL UNIQUE,
     login TEXT NOT NULL UNIQUE,
     senha TEXT NOT NULL,
-    role VARCHAR(10) NOT NULL CHECK (role IN ('USER','ADMIN'))
+    role VARCHAR(10) NOT NULL CHECK (role IN ('USER','ADMIN')),
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE produto (
@@ -14,5 +16,7 @@ CREATE TABLE produto (
     valor_unitario DECIMAL(10,2) NOT NULL,
     unidade_medida VARCHAR(10) NOT NULL,
     quantidade INTEGER NOT NULL,
-    usuario_id INTEGER NOT NULL REFERENCES usuario(id)
+    usuario_id INTEGER NOT NULL REFERENCES usuario(id),
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
